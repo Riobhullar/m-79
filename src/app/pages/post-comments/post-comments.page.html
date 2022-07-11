@@ -1,0 +1,48 @@
+<ion-header >
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <ion-progress-bar *ngIf="postLoader" type="indeterminate" color="tertiary"></ion-progress-bar>
+
+  <div *ngIf="!postLoader" class="ion-padding">
+
+    <app-post *ngIf="postDetail" [post]="postDetail"></app-post>
+
+    <ion-item class="ion-margin-bottom ion-no-padding">
+      <ion-label class="comment_label ion-no-padding" color="tertiary">Comments</ion-label>
+    </ion-item>
+
+    <div *ngFor="let comment of postComments" class="comment_card">
+      <div class="ion-padding-top">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1">
+              <ion-icon name="person-circle" color="primary"></ion-icon>
+            </ion-col>
+            <ion-col>
+              <div class="ion-text-start">
+                <ion-label>
+                  {{comment.email}}
+                </ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="ion-padding">
+
+        <ion-label>
+          {{comment.body}}
+        </ion-label>
+      </div>
+
+
+    </div>
+
+  </div>
+</ion-content>

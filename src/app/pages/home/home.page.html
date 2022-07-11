@@ -1,0 +1,46 @@
+<ion-header >
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-row>
+              <div class="title">Home</div>
+            </ion-row>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-end">
+              <ion-badge color="primary">{{postsList.length}}</ion-badge>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-searchbar 
+    color="primary"
+      mode="ios"
+      [(ngModel)]="searchModel" 
+      showCancelButton="focus" 
+      debounce="500" 
+      animated 
+      placeholder="search post" 
+      (ionChange)="searchPost()"
+      (ionCancel)="searchCancel()"
+      (ionClear)="searchClear()"
+    ></ion-searchbar>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-progress-bar *ngIf="postsLoading" type="indeterminate" color="tertiary"></ion-progress-bar>
+  <ion-list class="ion-padding">
+    <app-post *ngFor="let post of postsList" [post]="post"></app-post>
+  </ion-list>
+
+  <div *ngIf="!postsList.length && !postsLoading" class="no_post_found">
+    No posts found.
+  </div>
+</ion-content>

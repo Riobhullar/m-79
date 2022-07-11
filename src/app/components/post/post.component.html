@@ -1,0 +1,17 @@
+<div *ngIf="post" class="post_card ion-padding" [routerLink]="'/post-comments/' + post.id">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">
+        <img src="./assets/icon/title.svg" height="20" width="20">
+      </ion-col>
+      <ion-col>
+        <div>{{post.title}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div>
+    <p class="ion-no-margin">
+      {{post.body}}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "name": "m79",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
